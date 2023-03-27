@@ -89,9 +89,7 @@ exports.likeSauce = (req, res, next)=>{
                     sauce.usersLiked = sauce.usersLiked.filter(u=>u!=currentUserId)
                 break
             }
-
-            console.log(sauce)
-
+            
             Sauce.updateOne({ _id: req.params.id }, {
                 $set: {
                     likes: sauce.likes,
