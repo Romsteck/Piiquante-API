@@ -60,5 +60,48 @@ exports.deleteSauce = (req, res, next)=>{
         .catch((error)=>res.status(500).json({error}))
 }
 exports.likeSauce = (req, res, next)=>{
-    
+
+    Sauce.findOne({_id: req.params.id})
+        .then((sauce)=>{
+
+            const currentUserId = req.auth.userId
+
+            switch (req.body.like) {
+                case 1:
+                    sauce.likes = sauce.likes + 1
+                    sauce.usersLiked.push(currentUserId)
+                    sauce.usersDisliked = sauce.usersDisliked.filter(u=>u!=currentUserId)
+                break
+                case 0:
+                    if (sauce.usersLiked.filter(u=>u===currentUserId).length===1) {
+                        sauce.likes = sauce.likes - 1
+                        sauce.usersLiked = sauce.usersLiked.filter(u=>u!=currentUserId)
+                    } else {
+                        if (sauce.usersDisliked.filter(u=>u===currentUserId).length===1) {
+                            sauce.dislikes = sauce.dislikes - 1
+                            sauce.usersDisliked = sauce.usersDisliked.filter(u=>u!=currentUserId)
+                        }
+                    }
+                break
+                case -1:
+                    sauce.dislikes = sauce.dislikes + 1
+                    sauce.usersDisliked.push(currentUserId)
+                    sauce.usersLiked = sauce.usersLiked.filter(u=>u!=currentUserId)
+                break
+            }
+
+            console.log(sauce)
+
+            Sauce.updateOne({ _id: req.params.id }, {
+                $set: {
+                    likes: sauce.likes,
+                    dislikes: sauce.dislikes,
+                    usersLiked: sauce.usersLiked,
+                    usersDisliked: sauce.usersDisliked
+                }
+            })
+            .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+            .catch(error => res.status(400).json({ error }))
+        })
+        .catch((error)=>res.status(500).json({error}))
 }
