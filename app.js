@@ -18,7 +18,7 @@ app.use((req, res, next)=>{
 
 mongoose.set('strictQuery', false)
 mongoose.connect(
-    `mongodb+srv://${process.env.USER_ID}:${process.env.USER_KEY}@${process.env.MONGODB_ADDRESS}/?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.USER_ID}:${process.env.USER_PASSWORD}@${process.env.MONGODB_ADDRESS}/?retryWrites=true&w=majority`,
     {
         useNewUrlParser:true,
         useUnifiedTopology:true
