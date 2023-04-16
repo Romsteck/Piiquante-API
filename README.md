@@ -12,7 +12,6 @@
         - MONGODB_ADDRESS : Adresse de la base de données
         - JSON_WEBTOKEN : Clé secrète pour l'encryption du token
 
-
 # 2. Démarrage
     - Le logiciel "NodeJS" doit être installé sur l'ordinateur
     - Utilisez la commande NPM START pour démarrer le serveur
