@@ -1,5 +1,3 @@
-# Préparation & démarrage de l'API
-
 # 1. Préparation
 ### 1. Création des fichiers et dossiers requis dans le dossier racine du répertoire de l'api
     1. Créer un fichier .env en se basant sur le modèle ".env exemple"
