@@ -1,7 +1,7 @@
-# Configuration de l'accès à la base de données
-- L'accès à la base de données (MongoDB) utilise un compte de service pour fonctionner
+# Accès à la base de données
+- L'accès à la base de données (MongoDB) fonctionne grâce à un compte de service
 
-## Étapes à suivre pour activer la connexion
+## Préparation de l'API ()
 1. Récupérer les informations d'identification fournies par le développeur
 2. Ouvrir le répertoire contenant les fichiers de configuration de l'API
 3. Ouvrir le fichier ".env"
@@ -9,6 +9,7 @@
     - USER_ID : Identifiant
     - USER_PASSWORD : Mot de passe
     - MONGODB_ADDRESS : Adresse de la base de données
+    - JSON_WEBTOKEN : Clé secrète pour l'encryption du token
 
 
 # Démarrage de l'api
@@ -23,3 +24,7 @@
 AJOUTER :
     - Le front dans Github
     - LE détail pour démarrer le front
+
+
+
+/// PENSER A CREER LE DOSSIER IMAGES
