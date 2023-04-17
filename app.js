@@ -19,6 +19,7 @@ const authLimiter = rateLimit({
 const app = express()
 app.use(express.json())
 app.use(cors())
+app.use(helmet({crossOriginResourcePolicy: false}))
 
 mongoose.set('strictQuery', false)
 mongoose.connect(
@@ -32,8 +33,6 @@ mongoose.connect(
 .catch(()=>console.log('Connexion à MongoDB échouée'))
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
-
-app.use(helmet())
 app.use('/api/auth', authLimiter, userRoutes)
 app.use('/api/sauces', saucesRoutes)
 

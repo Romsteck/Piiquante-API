@@ -14,7 +14,8 @@
 
 # 2. Démarrage
     - Le logiciel "NodeJS" doit être installé sur l'ordinateur
-    - Utilisez la commande NPM START pour démarrer le serveur
+    - Installez toutes les dépendances requises avec "npm install"
+    - Utilisez la commande "npm start" pour démarrer le serveur
 
 # 3. Accès
     - L'API est accessible depuis le port 3000
